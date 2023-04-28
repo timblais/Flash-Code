@@ -1,7 +1,11 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap"
+import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap"
+import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react"
 
 const NavBar = () => {
+  const session = useSession()
+  const userName = session.data?.user.name
+
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="sm" className="px-4">
@@ -12,10 +16,14 @@ const NavBar = () => {
             <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             <Nav.Link href="/decks">Decks</Nav.Link>
             <Nav.Link href="/study">Study</Nav.Link>
-            <Button onClick={() => signOut()}>Sign Out</Button>
           </Nav>
           <Nav>
-            <Nav.Link href="/dashboard">Profile</Nav.Link>
+            <NavDropdown title={userName}>
+              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => signOut()}>
+                Sign Out
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
