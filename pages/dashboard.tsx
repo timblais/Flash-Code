@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react"
 import { createPage } from "../components/page"
+import dbConnect from "@/lib/dbConnect"
 
 export default createPage({
   title: "Dashboard",

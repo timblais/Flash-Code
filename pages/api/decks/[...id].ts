@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth/[...nextauth]"
-import dbConnect from "@/lib/dbconnect"
+import dbConnect from "../../../lib/dbConnect"
 import Deck from "@/models/Deck"
 import Card from "@/models/Card"
 
@@ -22,6 +22,7 @@ export default async function handler(
 
   if (id) {
     const params = id as string[]
+    console.log(params)
 
     // returns all of the user's decks along with the cards associated and when they are due
     if (params.length === 1) {
@@ -54,9 +55,7 @@ export default async function handler(
       } catch (err) {
         res.status(400).json({ success: false })
       }
-    }
-    // returns a single deck with all of its cards
-    else {
+    } else if (params.length === 2) {
       const user = params[0]
       const deck = params[1]
       try {
