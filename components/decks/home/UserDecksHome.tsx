@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react"
 import { getUserDecks } from "../../api/apiCalls"
 import DeckHomePreview from "./DeckHomePreview"
 import NewDeck from "./NewDeck"
+import PageTitle from "@/components/Title"
 
 const UserDecksHome = () => {
   const session = useSession()
@@ -42,8 +43,9 @@ const UserDecksHome = () => {
 
   return (
     <section>
+      <PageTitle title={"My Decks"} />
       <NewDeck deckRefresh={refreshDecks} />
-      {decks}
+      <div className="flex flex-col justify-center items-center">{decks}</div>
     </section>
   )
 }

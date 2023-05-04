@@ -29,7 +29,6 @@ export default createPage({
   Page: () => {
     return (
       <>
-        <div>Hello From Decks</div>
         <UserDecksHome />
       </>
     )

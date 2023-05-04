@@ -8,14 +8,14 @@ const NewDeck = ({ deckRefresh }: { deckRefresh: any }) => {
   const user = session.data?.user.id || "no user"
   const [enterNewDeck, setEnterNewDeck] = useState(false)
   const [deckTitle, setDeckTitle] = useState("")
-  const [language, setLanguage] = useState("javascript")
+  const [language, setLanguage] = useState("Javascript")
 
   const handleClick = (event: any) => {
     setEnterNewDeck(true)
   }
 
   const handleSubmit = async (event: any) => {
-    const createDeck = createNewDeck(user, deckTitle, language)
+    const createDeck = await createNewDeck(user, deckTitle, language)
     setEnterNewDeck(false)
     deckRefresh()
   }
@@ -26,7 +26,12 @@ const NewDeck = ({ deckRefresh }: { deckRefresh: any }) => {
 
   return (
     <>
-      <button onClick={handleClick}>Create New Deck</button>
+      <div className="flex justify-center items-center">
+        <Button className="mt-2" variant="outline-dark" onClick={handleClick}>
+          Create New Deck
+        </Button>
+      </div>
+
       <Modal
         show={enterNewDeck}
         onHide={handleCancel}
@@ -52,7 +57,7 @@ const NewDeck = ({ deckRefresh }: { deckRefresh: any }) => {
               <Form.Select onChange={(e) => setLanguage(e.target.value)}>
                 <option value="Javascript">Javascript</option>
                 <option value="Typescript">Typescript</option>
-                <option value="3Python">Python</option>
+                <option value="Python">Python</option>
               </Form.Select>
             </Form.Group>
           </Form>

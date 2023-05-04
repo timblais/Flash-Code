@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { Card, Button } from "react-bootstrap"
+import { useRouter } from "next/router"
 
 const DeckHomePreview = ({
   deckId,
@@ -12,15 +14,23 @@ const DeckHomePreview = ({
   language: string
 }) => {
   const url = `/decks/view/${deckId}`
+  const { push } = useRouter()
+  const handleClick = () => {
+    push(url)
+  }
   return (
-    <div>
-      <h3>{deckName}</h3>
-      <span>{totalCards} Cards</span>
-      <span>Primary Language: {language}</span>
-      <span className="w-full text-l my-2 pl-4">
-        <Link href={url}>View/Edit</Link>
-      </span>
-    </div>
+    <Card className="w-4/5 mt-3">
+      <Card.Header className="text-2xl">
+        {deckName}
+        <Button variant="outline-dark" className="mx-4" onClick={handleClick}>
+          View Deck
+        </Button>
+      </Card.Header>
+      <Card.Body>
+        <span className="pr-2">{totalCards} Cards</span>
+        <span className="pr-2">Primary Language: {language}</span>
+      </Card.Body>
+    </Card>
   )
 }
 
