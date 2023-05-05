@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../../auth/[...nextauth]"
 import dbConnect from "../../../../lib/dbConnect"
 import Deck from "@/models/Deck"
+import Card from "@/models/Card"
 
 import type { NextApiRequest, NextApiResponse } from "next"
 
@@ -24,10 +25,11 @@ export default async function handler(
 
   if (method === "GET") {
     // Get the list of decks for this user
-    const user = id
+    const deck = id
     try {
-      const getUserDecks = await Deck.find({ createdBy: user })
-      res.status(200).json({ success: true, decks: getUserDecks })
+      const myDeck = await Deck.find({ _id: deck })
+      const deckCards = await Card.find({ deck: deck })
+      res.status(200).json({ success: true, deck: myDeck[0], cards: deckCards })
     } catch (err) {
       res.status(400).json({ success: false })
     }

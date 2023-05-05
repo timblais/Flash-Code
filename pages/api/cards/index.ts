@@ -31,7 +31,7 @@ export default async function handler(
       const card = await Card.create({
         createdBy: req.body.user,
         createdDate: new Date(),
-        title: `Card ${deck.totalCards}`,
+        title: req.body.cardTitle,
         dueDate: new Date(),
         deck: req.body.deckId,
         question: req.body.question,

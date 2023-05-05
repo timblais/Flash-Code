@@ -1,7 +1,5 @@
-import Button from "react-bootstrap/Button"
 import { createPage } from "@/components/page"
-import { getUserDecks } from "@/components/api/apiCalls"
-import { getSession, useSession } from "next-auth/react"
+import { getSession } from "next-auth/react"
 import UserDecksHome from "@/components/decks/home/UserDecksHome"
 
 export const getServerSideProps = async (context: any) => {
@@ -15,9 +13,6 @@ export const getServerSideProps = async (context: any) => {
       },
     }
   }
-
-  // const user = session.user.id
-  // const decks = await getUserDecks(user)
 
   return {
     props: { session },

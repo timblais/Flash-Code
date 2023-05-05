@@ -66,7 +66,7 @@ const CardSchema = new mongoose.Schema({
 
   language: {
     type: String,
-    default: "plaintext",
+    default: "javascript",
     require: true,
   },
 })
