@@ -86,7 +86,7 @@ const NewCard = ({
               <Form.Label>Card Title</Form.Label>
               <Form.Control
                 type="input"
-                placeholder="Enter a Title for this Deck"
+                placeholder="Enter a Title for this Card"
                 onChange={(e) => setCardTitle(e.target.value)}
               />
             </Form.Group>
