@@ -6,6 +6,7 @@ import CodeMirror from "@uiw/react-codemirror"
 import { javascript } from "@codemirror/lang-javascript"
 import { vscodeDark } from "@uiw/codemirror-theme-vscode"
 import { EditorView } from "codemirror"
+import LanguageOptions from "@/components/LanguageOptions"
 
 const NewCard = ({
   deckId,
@@ -93,9 +94,7 @@ const NewCard = ({
             <Form.Group className="mb-3">
               <Form.Label>Card Language</Form.Label>
               <Form.Select onChange={(e) => setCardLanguage(e.target.value)}>
-                <option value="Javascript">Javascript</option>
-                <option value="Typescript">Typescript</option>
-                <option value="Python">Python</option>
+                <LanguageOptions selectedLanguage={cardLanguage} />
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">

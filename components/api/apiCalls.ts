@@ -82,3 +82,55 @@ export const createNewCard = async (
     console.log(error)
   }
 }
+
+export const editCard = async (
+  _id: string,
+  cardTitle: string,
+  question: string,
+  answer: string,
+  language: string
+) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/cards/edit`, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        _id: _id,
+        cardTitle: cardTitle,
+        question: question,
+        answer: answer,
+        language: language,
+      }),
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const editResetCard = async (
+  _id: string,
+  cardTitle: string,
+  question: string,
+  answer: string,
+  language: string
+) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/cards/editreset`, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        _id: _id,
+        cardTitle: cardTitle,
+        question: question,
+        answer: answer,
+        language: language,
+      }),
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
