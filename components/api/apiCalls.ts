@@ -1,5 +1,4 @@
 export const getUserDecks = async (user: string) => {
-  console.log("getUserDecks called")
   try {
     const response = await fetch(
       `http://localhost:3000/api/decks/byuser/${user}`,
@@ -128,6 +127,24 @@ export const editResetCard = async (
         language: language,
       }),
     })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getUserDecksWithCardsDue = async (user: string) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/cards/byuser/${user}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
     const data = await response.json()
     return data
   } catch (error) {

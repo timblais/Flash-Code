@@ -24,3 +24,7 @@ export interface CardObject {
   title: string
   totalViews: number
 }
+
+export interface DecksWithCardsObject {
+  [key: string]: { deck: DeckObject; cards: CardObject[] }
+}

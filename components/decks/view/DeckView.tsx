@@ -102,7 +102,11 @@ const DeckView = () => {
   return (
     <>
       <PageTitle title={returnedDeck?.title ?? ""} />
-      <NewCard deckId={deckId} saveAndRefresh={saveAndRefresh} />
+      <NewCard
+        deckId={deckId}
+        saveAndRefresh={saveAndRefresh}
+        language={returnedDeck?.language ?? ""}
+      />
       <Container>
         <Row xs={1} md={2} lg={3}>
           {cards}

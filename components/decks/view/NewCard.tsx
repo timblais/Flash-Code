@@ -11,16 +11,18 @@ import LanguageOptions from "@/components/LanguageOptions"
 const NewCard = ({
   deckId,
   saveAndRefresh,
+  language,
 }: {
   deckId: string
   saveAndRefresh: any
+  language: string
 }) => {
   const session = useSession()
   const user = session.data?.user.id || "no user"
   const [enterNewCard, setEnterNewCard] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [cardTitle, setCardTitle] = useState("")
-  const [cardLanguage, setCardLanguage] = useState("Javascript")
+  const [cardLanguage, setCardLanguage] = useState(language)
   const [questionValue, setQuestionValue] = useState("")
   const [answerValue, setAnswerValue] = useState("")
 
@@ -40,7 +42,7 @@ const NewCard = ({
     setCardTitle("")
     setQuestionValue("")
     setAnswerValue("")
-    setCardLanguage("Javascript")
+    setCardLanguage(language)
     setEnterNewCard(false)
     setSubmitSuccess(true)
   }
@@ -54,7 +56,7 @@ const NewCard = ({
     setCardTitle("")
     setQuestionValue("")
     setAnswerValue("")
-    setCardLanguage("Javascript")
+    setCardLanguage(language)
     setEnterNewCard(false)
   }
 
@@ -94,7 +96,7 @@ const NewCard = ({
             <Form.Group className="mb-3">
               <Form.Label>Card Language</Form.Label>
               <Form.Select onChange={(e) => setCardLanguage(e.target.value)}>
-                <LanguageOptions selectedLanguage={cardLanguage} />
+                <LanguageOptions selectedLanguage={language} />
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
