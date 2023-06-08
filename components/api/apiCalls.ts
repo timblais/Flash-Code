@@ -151,3 +151,21 @@ export const getUserDecksWithCardsDue = async (user: string) => {
     console.log(error)
   }
 }
+
+export const getCardsToStudy = async (deck: string) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/cards/study/${deck}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
