@@ -2,8 +2,11 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import { getCardsToStudy } from "@/components/api/apiCalls"
 import PageTitle from "@/components/Title"
+import SubHeader from "@/components/subHeader"
 import { DeckObject, CardObject } from "@/types/documentTypes"
 import { Container, Row, Modal, Button } from "react-bootstrap"
+import StudyCard from "./StudyCard"
+import Loading from "../../Loading"
 
 const ActiveStudy = () => {
   const router = useRouter()
@@ -21,11 +24,17 @@ const ActiveStudy = () => {
     getStudyCards(deckId)
   }, [deckId])
 
-  // deck and cards due are returned. Next steps: build out display of cards and study workflow.
+  const updateCards = () => {}
 
+  // deck and cards due are returned. Next steps: build out display of cards and study workflow.
+  if (!returnedDeck) {
+    return <Loading />
+  }
   return (
     <>
-      <div>active study here</div>
+      <PageTitle title={`Studying ${returnedDeck?.title ?? ""}`} />
+      <SubHeader text={`${returnedCards.length} Cards Remaining`} />
+      <StudyCard card={returnedCards[0]} updateRemaining={updateCards} />
     </>
   )
 }

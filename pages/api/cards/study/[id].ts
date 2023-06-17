@@ -32,16 +32,12 @@ export default async function handler(
       const myDeck = await Deck.find({ _id: deck })
       const cards = await Card.find({ deck: deck })
 
-      let cardsDue: CardObject[] = []
-
-      for (const card of cards) {
-        let dateDue = new Date(card["dueDate"])
+      let cardsDue: CardObject[] = cards.filter((card) => {
         let tomorrow = new Date()
         tomorrow.setHours(24, 0, 0, 0)
-        if (dateDue <= tomorrow) {
-          cardsDue.push(card)
-        }
-      }
+        let date = new Date(card["dueDate"])
+        return date <= tomorrow
+      })
 
       cardsDue.sort(
         (a, b) => Date.parse(a["dueDate"]) - Date.parse(b["dueDate"])
