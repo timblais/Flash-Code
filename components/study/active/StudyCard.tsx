@@ -13,20 +13,48 @@ const StudyCard = ({
   updateRemaining: any
 }) => {
   return (
-    <Accordion>
-      <Accordion.Item eventKey="0">
+    <Accordion
+      className="flex flex-col justify-start items-center"
+      defaultActiveKey={["0"]}
+    >
+      <Accordion.Item eventKey="0" className="w-full sm:w-4/5 lg:w-3/5">
         <Accordion.Header>Question</Accordion.Header>
         <Accordion.Body>
-          <div className="w-full lg:w-4/5">
-            <CodeMirror
-              height="200px"
-              width="100%"
-              editable={false}
-              extensions={[javascript({ jsx: true }), EditorView.lineWrapping]}
-              theme={vscodeDark}
-              value={card.question}
-            />
-          </div>
+          <CodeMirror
+            height="200px"
+            width="100%"
+            editable={false}
+            extensions={[javascript({ jsx: true }), EditorView.lineWrapping]}
+            theme={vscodeDark}
+            value={card.question}
+          />
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="1" className="w-full sm:w-4/5 lg:w-3/5">
+        <Accordion.Header>Enter Answer</Accordion.Header>
+        <Accordion.Body>
+          <CodeMirror
+            height="200px"
+            width="100%"
+            editable={true}
+            extensions={[javascript({ jsx: true }), EditorView.lineWrapping]}
+            theme={vscodeDark}
+            value={""}
+          />
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="2" className="w-full sm:w-4/5 lg:w-3/5">
+        <Accordion.Header>Show Answer</Accordion.Header>
+        <Accordion.Body>
+          <CodeMirror
+            height="200px"
+            width="100%"
+            editable={false}
+            extensions={[javascript({ jsx: true }), EditorView.lineWrapping]}
+            theme={vscodeDark}
+            value={card.answer}
+          />
+          <div>row of rating buttons</div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
