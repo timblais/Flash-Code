@@ -1,3 +1,5 @@
+import { CardObject } from "@/types/documentTypes"
+
 export const getUserDecks = async (user: string) => {
   try {
     const response = await fetch(
@@ -161,6 +163,30 @@ export const getCardsToStudy = async (deck: string) => {
         headers: {
           "Content-type": "application/json",
         },
+      }
+    )
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const updateRatedCard = async (card: CardObject) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/cards/edit/updateRated`,
+      {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          _id: card._id,
+          dueDate: card.dueDate,
+          repetitionNumber: card.repetitionNumber,
+          easinessFactor: card.easinessFactor,
+          repetitionInterval: card.repetitionInterval,
+          totalViews: card.totalViews,
+        }),
       }
     )
     const data = await response.json()
