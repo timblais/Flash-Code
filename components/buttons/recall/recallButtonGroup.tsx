@@ -6,6 +6,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
       <div className="flex jusfity-end items-center">
         <RecallButton
           key={0}
+          weight={0}
           onClick={onclick}
           name={"Zero"}
           bgColor={"bg-red-500"}
@@ -14,6 +15,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
         />
         <RecallButton
           key={1}
+          weight={1}
           onClick={onclick}
           name={"Bad"}
           bgColor={"bg-red-400"}
@@ -22,6 +24,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
         />
         <RecallButton
           key={2}
+          weight={2}
           onClick={onclick}
           name={"Almost"}
           bgColor={"bg-red-300"}
@@ -32,6 +35,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
       <div className="flex jusfity-start items-center">
         <RecallButton
           key={3}
+          weight={3}
           onClick={onclick}
           name={"Okay"}
           bgColor={"bg-emerald-300"}
@@ -40,6 +44,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
         />
         <RecallButton
           key={4}
+          weight={4}
           onClick={onclick}
           name={"Good"}
           bgColor={"bg-emerald-400"}
@@ -48,6 +53,7 @@ const RecallButtonGroup = ({ onclick }: { onclick: any }) => {
         />
         <RecallButton
           key={5}
+          weight={5}
           onClick={onclick}
           name={"Perfect"}
           bgColor={"bg-emerald-500"}
