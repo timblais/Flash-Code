@@ -4,13 +4,14 @@ import CodeMirror from "@uiw/react-codemirror"
 import { vscodeDark } from "@uiw/codemirror-theme-vscode"
 import { EditorView } from "codemirror"
 import { javascript } from "@codemirror/lang-javascript"
+import RecallButtonGroup from "@/components/buttons/recall/recallButtonGroup"
 
 const StudyCard = ({
   card,
-  updateRemaining,
+  rateAndUpdate,
 }: {
   card: CardObject
-  updateRemaining: any
+  rateAndUpdate: any
 }) => {
   return (
     <Accordion
@@ -54,7 +55,7 @@ const StudyCard = ({
             theme={vscodeDark}
             value={card.answer}
           />
-          <div>row of rating buttons</div>
+          <RecallButtonGroup onclick={rateAndUpdate} />
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
